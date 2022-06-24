@@ -8,7 +8,7 @@ class AuthorsController extends Controller
 {
     public function index()
     {
-        $authors =  new Author();
+        $authors = new Author();
         $data = $authors->displayAll();
 
         $this->apiResponse($data);

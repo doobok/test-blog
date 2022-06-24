@@ -12,7 +12,7 @@ class Author
         $statement = $pdo->prepare("SELECT * FROM authors");
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        return ['authors' => $results ];
+        return ['authors' => $results];
     }
 
 }

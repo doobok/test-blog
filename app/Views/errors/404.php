@@ -1,7 +1,7 @@
 <?php
 header("HTTP/1.1 404 Not Found");
 ?>
-<?php require_once __DIR__ . '/../partials/header.php';?>
+<?php require_once __DIR__ . '/../partials/header.php'; ?>
 
 <div class="flex h-72">
     <div class="m-auto text-center">
@@ -10,4 +10,4 @@ header("HTTP/1.1 404 Not Found");
     </div>
 
 </div>
-<?php require_once __DIR__ . '/../partials/footer.php';?>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

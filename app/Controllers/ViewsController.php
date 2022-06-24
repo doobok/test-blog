@@ -11,7 +11,7 @@ class ViewsController
         {
             $fullPath = __DIR__ . '/../Views/errors/404.php';
         }
-        include $fullPath;
+        require_once $fullPath;
     }
 
 }

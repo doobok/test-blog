@@ -8,6 +8,7 @@ use App\Database\MySQLCreateTables;
 class TablesController extends Controller
 {
     public $db;
+
     public function __construct()
     {
         $this->db = new MySQLCreateTables((new MySQLConnection())->connect());

@@ -11,3 +11,7 @@
 ### database create & seed
 - /tables - check available tables on database
 - /tables_create - create tables and seed demo data
+
+### Demo data
+- http://test-blog.chernobay.com.ua/ - production
+- http://test-blog.chernobay.com.ua/api - API endpoint

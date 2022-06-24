@@ -8,7 +8,7 @@ class NewsController extends Controller
 {
     public function category($id)
     {
-        $news =  new News();
+        $news = new News();
         $data = $news->categoryBlog($id);
 
         $this->apiResponse($data);
@@ -16,7 +16,7 @@ class NewsController extends Controller
 
     public function author($id)
     {
-        $news =  new News();
+        $news = new News();
         $data = $news->authorBlog($id);
 
         $this->apiResponse($data);
@@ -24,12 +24,11 @@ class NewsController extends Controller
 
     public function article($id)
     {
-        $article =  new News();
+        $article = new News();
         $data = $article->articleBlog($id);
 
         $this->apiResponse($data);
     }
-
 
 
 }

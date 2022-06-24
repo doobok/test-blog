@@ -9,28 +9,31 @@ class News
     public function categoryBlog($id): array
     {
         $pdo = (new MySQLConnection())->connect();
-        $statement = $pdo->prepare("SELECT * FROM news INNER JOIN categories_news on categories_news.category_id=". $id);
+        $statement = $pdo->prepare("SELECT * FROM news INNER JOIN categories_news on categories_news.category_id=" . $id);
+        $statement = $pdo->prepare("SELECT * FROM  categories_news LEFT JOIN news 
+                                            ON news_id = id 
+                                            WHERE categories_news.category_id = " . $id);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        return ['news' => $results ];
+        return ['news' => $results];
     }
 
     public function authorBlog($id): array
     {
         $pdo = (new MySQLConnection())->connect();
-        $statement = $pdo->prepare("SELECT * FROM news WHERE author_id=". $id);
+        $statement = $pdo->prepare("SELECT * FROM news WHERE author_id=" . $id);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        return ['news' => $results ];
+        return ['news' => $results];
     }
 
     public function articleBlog($id): array
     {
         $pdo = (new MySQLConnection())->connect();
-        $statement = $pdo->prepare("SELECT * FROM news WHERE id=". $id);
+        $statement = $pdo->prepare("SELECT * FROM news WHERE id=" . $id);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        return ['article' => $results ];
+        return ['article' => $results];
     }
 
 }
