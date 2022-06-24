@@ -5,20 +5,20 @@
 ?>
 
 <?php
-$data = file_get_contents('http://news.my/api/author/'. $id);
+$data = file_get_contents($_ENV['API_DOMAIN']. '/api/author/'. $id);
 $data = json_decode($data, true);
 ?>
 
-<?php include 'partials/header.php';?>
+<?php require_once __DIR__ . '/partials/header.php';?>
 
-<h1>Author Blog</h1>
+<h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Author Blog</h1>
 
-<div class="news-block">
+<ul class="mt-3">
     <?php foreach ($data['news'] as $item): ?>
 
         <?php include 'partials/news-item.php';?>
 
     <?php endforeach; ?>
-</div>
+</ul>
 
-<?php include 'partials/footer.php';?>
+<?php require_once __DIR__ . '/partials/footer.php';?>

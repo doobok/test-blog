@@ -21,7 +21,7 @@ class TablesController extends Controller
 
     public function create()
     {
-        $result = $this->db->createTables();
+        $result = $this->db->seedDB();
         $this->apiResponse(['success' => $result]);
     }
 }

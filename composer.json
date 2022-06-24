@@ -6,6 +6,7 @@
   },
   "require": {
     "ext-json": "*",
-    "vlucas/phpdotenv": "^5.4"
+    "vlucas/phpdotenv": "^5.4",
+    "fakerphp/faker": "^1.19"
   }
 }
