@@ -6,22 +6,22 @@ use App\Database\MySQLConnection;
 
 class News
 {
-    public function categoryBlog($id): array
+    public function categoryBlog($id, $offset): array
     {
         $pdo = (new MySQLConnection())->connect();
-        $statement = $pdo->prepare("SELECT * FROM news INNER JOIN categories_news on categories_news.category_id=" . $id);
-        $statement = $pdo->prepare("SELECT * FROM  categories_news LEFT JOIN news 
+        $statement = $pdo->prepare("SELECT id, title, intro FROM  categories_news LEFT JOIN news 
                                             ON news_id = id 
-                                            WHERE categories_news.category_id = " . $id);
+                                            WHERE categories_news.category_id = " . $id . " LIMIT " . $offset .", 20");
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         return ['news' => $results];
     }
 
-    public function authorBlog($id): array
+    public function authorBlog($id, $offset): array
     {
         $pdo = (new MySQLConnection())->connect();
-        $statement = $pdo->prepare("SELECT * FROM news WHERE author_id=" . $id);
+        $statement = $pdo->prepare("SELECT id, title, intro 
+                                            FROM news WHERE author_id = " . $id . " LIMIT " . $offset .", 20");
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         return ['news' => $results];

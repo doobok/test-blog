@@ -9,7 +9,7 @@
 <?php if (isset($item['children'])): ?>
     <ul class="list-disc list-inside ml-5">
         <?php foreach ($item['children'] as $item): ?>
-            <?php include 'category-list-item.php'; ?>
+            <?php require __DIR__ . '/category-list-item.php'; ?>
         <?php endforeach; ?>
     </ul>
 <?php endif; ?>

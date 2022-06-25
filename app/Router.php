@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Controllers\ViewsController;
+
 class Router
 {
     private static $routes = array();
@@ -14,6 +16,20 @@ class Router
     {
     }
 
+    public static function get($pattern, $request, $callback)
+    {
+        if ($request->requestMethod() === 'GET') {
+            self::route($pattern, $callback);
+        }
+    }
+
+    public static function post($pattern, $request, $callback)
+    {
+        if ($request->requestMethod() === 'POST') {
+            self::route($pattern, $callback);
+        }
+    }
+
     public static function route($pattern, $callback)
     {
         $pattern = '/^' . str_replace('/', '\/', $pattern) . '$/';
@@ -22,6 +38,7 @@ class Router
 
     public static function execute($url)
     {
+        $url = (stristr($url, '?', true)) ?: $url;
         foreach (self::$routes as $pattern => $callback) {
             if (preg_match($pattern, $url, $params)) {
                 array_shift($params);

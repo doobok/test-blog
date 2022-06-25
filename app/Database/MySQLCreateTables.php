@@ -78,6 +78,9 @@ class MySQLCreateTables
 
     public function seedDB(): bool
     {
+        if ($this->checkTables()) {
+            return false;
+        }
         $this->createTables();
 
         $commands = [

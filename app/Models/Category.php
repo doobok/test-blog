@@ -17,9 +17,13 @@ class Category
     {
         $arr_cat = [];
         $pdo = (new MySQLConnection())->connect();
-        $statement = $pdo->query("SELECT * FROM categories")->fetchAll();
+        $statement = $pdo->query("SELECT id, name, parent_id FROM categories")->fetchAll();
         foreach ($statement as $category) {
-            $arr_cat[$category['id']] = $category;
+            $arr_cat[$category['id']] = [
+                'id' => $category['id'],
+                'name' => $category['name'],
+                'parent_id' => $category['parent_id'],
+            ];
         }
         return $arr_cat;
     }

@@ -8,45 +8,46 @@ class App
 {
     public static function run()
     {
-        Router::route('/api/tables', function () {
+        $request = new Request();
+
+        Router::get('/api/tables', $request, function () {
             (new Controllers\TablesController)->check();
         });
-        Router::route('/api/tables_create', function () {
+        Router::post('/api/tables', $request, function () {
             (new Controllers\TablesController)->create();
         });
-        Router::route('/api/authors', function () {
+        Router::get('/api/authors', $request, function () {
             (new Controllers\AuthorsController)->index();
         });
-        Router::route('/api/categories', function () {
+        Router::get('/api/categories', $request, function () {
             (new Controllers\CategoriesController)->index();
         });
-        Router::route('/api/author/(\d+)', function ($id) {
-            (new Controllers\NewsController())->author($id);
+        Router::get('/api/author/(\d+)', $request, function ($id) use ($request) {
+            (new Controllers\NewsController())->author($id, $request->offset);
         });
-        Router::route('/api/news/(\d+)', function ($id) {
-            (new Controllers\NewsController())->category($id);
+        Router::get('/api/news/(\d+)', $request, function ($id) use ($request) {
+            (new Controllers\NewsController())->category($id, $request->offset);
         });
-        Router::route('/api/article/(\d+)', function ($id) {
+        Router::get('/api/article/(\d+)', $request, function ($id) {
             (new Controllers\NewsController())->article($id);
         });
 
-
-        Router::route('/', function () {
+        Router::get('/', $request, function () {
             ViewsController::view('index');
         });
-        Router::route('/(\w+)', function ($page) {
+        Router::get('/(\w+)', $request, function ($page) {
             ViewsController::view($page);
         });
-        Router::route('/category/(\d+)', function ($id) {
+        Router::get('/category/(\d+)', $request, function ($id) {
             ViewsController::view('category', $id);
         });
-        Router::route('/author/(\d+)', function ($id) {
+        Router::get('/author/(\d+)', $request, function ($id) {
             ViewsController::view('author', $id);
         });
-        Router::route('/news/(\d+)', function ($id) {
+        Router::get('/news/(\d+)', $request, function ($id) {
             ViewsController::view('news', $id);
         });
-        Router::route('/article/(\d+)', function ($id) {
+        Router::get('/article/(\d+)', $request, function ($id) {
             ViewsController::view('article', $id);
         });
 

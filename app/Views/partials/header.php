@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="mx-auto bg-gray-200">
+<body class="bg-gray-800 mx-auto bg-gray-200">
 <!-- This example requires Tailwind CSS v2.0+ -->
 <nav class="bg-gray-800">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -29,4 +29,4 @@
         </div>
     </div>
 </nav>
- <div class="py-7 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+ <div class="bg-gray-200 py-7 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">

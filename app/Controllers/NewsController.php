@@ -6,18 +6,18 @@ use App\Models\News;
 
 class NewsController extends Controller
 {
-    public function category($id)
+    public function category($id, $offset)
     {
         $news = new News();
-        $data = $news->categoryBlog($id);
+        $data = $news->categoryBlog($id, $offset);
 
         $this->apiResponse($data);
     }
 
-    public function author($id)
+    public function author($id, $offset)
     {
         $news = new News();
-        $data = $news->authorBlog($id);
+        $data = $news->authorBlog($id, $offset);
 
         $this->apiResponse($data);
     }
