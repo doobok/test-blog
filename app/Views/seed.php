@@ -5,7 +5,21 @@
 ?>
 
 <?php
-$result = file_get_contents($_ENV['API_DOMAIN'] . '/api/tables_create');
+$postdata = http_build_query(
+    array()
+);
+
+$opts = array('http' =>
+    array(
+        'method'  => 'POST',
+        'header'  => 'Content-Type: application/x-www-form-urlencoded',
+        'content' => $postdata
+    )
+);
+
+$context  = stream_context_create($opts);
+
+$result = file_get_contents($_ENV['API_DOMAIN'] . '/api/tables', false, $context);
 $result = json_decode($result, true)['success'];
 ?>
 
